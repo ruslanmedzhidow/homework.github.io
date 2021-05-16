@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<body>
+    <img src="./samples01.jpg" alt="samples01">
+    <script>
+        var letters = [];
+        var str = 'Backend As A Service';
+        var wordMass = str.split(' ');
+
+        for ( var i = 0; i < wordMass.length; i++ ) {
+            letters.push(wordMass[i][0]);
+        }
+
+        console.log(letters);
+
+        function checkType (x) {
+            if (typeof x === 'number') {
+                var myData = new Date();
+                console.log(myData.toLocaleString());
+            } else {
+                console.log('Неверный тип данных');
+            }
+        }
+
+        checkType(5);
+        checkType('dfsdfsdf');
+        checkType('asdasdas');
+        checkType(5);
+
+
+
+
+    </script>
+</body>
+</html>
