@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания по Function</title>
+</head>
+<body>
+    <script>
+        // Объявите функцию без формальных параметров, которая выводит в консоль сама себя и все переданные ей аргументы
+        function printSelf(){
+            console.log(printSelf)
+            console.log(arguments)
+        }
+
+        printSelf (10, false, 'google');
+
+        // Объявите функцию userInfo, которая выводит в консоль:
+                    //  свойство "Дата регистрации: " + свойство data контекста вызова, если свойство registered имеет значение true
+                    //  сообщение "Незарегистрированный пользователь: " + свойство name в противном случае
+        function userInfo () {
+            if (this.registered===true) {
+                console.log('Дата регистрации :',  this.data)
+            }
+            else {
+                console.log('Незарегистрированный пользователь: ' ,  this.name)
+            }
+        };
+
+        var userOne = {
+            name: 'oleg',
+            age: 15,
+            registered: true,
+            data: '02.12.78',
+            getInfo: userInfo
+        }
+
+
+        var userTwo = {
+            name: 'oleg',
+            age: 15,
+            registered: false,
+            data: '02.12.78',
+            getInfo: userInfo
+        }
+
+        var userThree = {
+            name: 'ivan',
+            age: 18,
+            registered: true,
+            data: '02.22.898',
+            getInfo: userInfo
+        }
+
+        userThree.getInfo();
+
+
+    // Задание 3
+
+    var users = {
+            14587: {
+                    name: "Ivan",
+                    email: "ivan78@gmail.com"
+            },
+            28419: {
+                    name: "Georg",
+                    email: "georg.klep@gmail.com"
+            },
+            41457: {
+                    name: "Stephan",
+                    email: "stephan.borg@gmail.com"
+            }
+    }
+    var posts = {
+            7891451: {
+                    author: 14587,
+                    text: "Imagine we can encapsulate these secondary responsibilities in functions"
+            },
+            7891452: {
+                    author: 28419,
+                    text: `В конструкторе ключевое слово super используется как функция, вызывающая родительский конструктор. 
+                            Её необходимо вызвать до первого обращения к ключевому слову this в теле конструктора. 
+                            Ключевое слово super также может быть использовано для вызова функций родительского объекта`
+            },
+            7891453: {
+                    author: 28419,
+                    text: `DOM не обрабатывает или не вынуждает проверять пространство имен как таковое. 
+                            Префикс пространства имен, когда он связан с конкретным узлом, не может быть изменен`
+            },
+            7891454: {
+                    author: 14587,
+                    text: "Ключевое слово super используется для вызова функций, принадлежащих родителю объекта"
+            }
+    }
+    var comments = {
+            91078454: {
+                    postId: 7891451,
+                    author: 28419,
+                    text: `The static String.fromCharCode() method returns a string created 
+                            from the specified sequence of UTF-16 code units`
+            },
+            91078455: {
+                    postId: 7891451,
+                    author: 41457,
+                    text: `HTML элемент <template> — это механизм для отложенного рендера клиентского контента, 
+                            который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript`
+            },
+            91078457: {
+                    postId: 7891452,
+                    author: 41457,
+                    text: "Глобальный объект String является конструктором строк, или, последовательностей символов"
+            },
+            91078458: {
+                    postId: 7891452,
+                    author: 14587,
+                    text: `The Element.namespaceURI read-only property returns the namespace URI of the element, 
+                            or null if the element is not in a namespace`
+            }
+    }
+
+    function getCurrentPostComments ( postId ) {
+            var res = []
+
+            for (var item in comments) {
+
+                if (comments[item].postId === postId) {
+                    
+                    for (var prop in users) {
+                        
+                        if (comments[item].author === +prop) {
+                            res.push({
+                                name: users[prop].name,
+                                text: comments[item].text
+                            })
+                        }
+                    }
+                    
+                }
+            }
+
+            
+            return res
+    }
+
+    console.log ( getCurrentPostComments ( 7891451 ) )
+
+
+    </script>
+</body>
+</html>
