@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                        // Задание 1
+    {
+
+        function sampleFunc () {
+            console.log ( `${arguments.callee.name}: ${arguments[0]} | ${arguments[1]}` )
+        }
+
+        function modificator ( func, item1 = 'test', item2 = 'sample') {
+            return func.bind(null, item1, item2)
+        }
+
+        const testFunc = modificator( sampleFunc );
+
+        testFunc();
+    }
+
+
+                            // Задание 2
+    {
+        function sampleFunc () {
+            console.info ( `Symbols in my code: ${arguments.callee + 0}` )
+        }
+
+        function modificator ( func) {
+
+            console.dir(func.prototype);
+
+            // console.dir(func);
+        }
+
+        modificator( sampleFunc )
+
+        sampleFunc()
+        // console.log(sampleFunc1.prototype);
+    }
+                            // Задание 3
+    function testArguments () {
+
+        function generateError ( numArgs ) {
+            var err = new Error ( 'Invalid arguments' )
+                err.name = 'Application';
+                err.stack = `Function needs 3 arguments, but only ${numArgs} present`;
+
+            throw  err 
+            
+        }
+    
+        try {
+            arguments.length >= 3 ? null : generateError ( arguments.length )
+        }
+        catch ( err ) {
+            console.error ( `${err.name}: ${err.message}\n${err.stack}` )
+        }
+    }
+
+    testArguments('Google');
+
+    </script>
+</body>
+</html>
