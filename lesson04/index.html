@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const handbag = {
+    phone: 'iphone',
+    mirror: true,
+    beautician: 'avon',
+    flashlight: 'noNameCompany',
+    addValue(name, value){
+        this[name] = value
+    },
+    delValue: function (name){
+        delete this[name]    
+    },
+};
+
+
+
+handbag['knife'] = true
+
+handbag.addValue('keys', true)
+handbag.delValue('mirror')
+
+
+// delete handbag.mirror
+console.log(handbag);
+
+
+//                          ЗАДАНиЕ 3
+function User () {
+    this.addVal = function (propName, propValue ) {
+        this[propName] = propValue
+}
+}
+
+const user = new User();
+    user.addVal('fire', 'water');
+
+
+    
+    </script>
+</body>
+</html>
