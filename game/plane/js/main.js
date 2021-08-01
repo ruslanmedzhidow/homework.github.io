@@ -99,7 +99,6 @@ window.addEventListener('load', () => {
                                     plane.style.top = `${top - document.documentElement.clientHeight / 2 + 50}px`;
                                     plane.style.transform = 'scaleX(-1) rotateZ(10deg)';
                                     planeAudio.volume = 0.4;
-                                    return planeLocation;
                                 }
                                 break;
 
@@ -108,7 +107,6 @@ window.addEventListener('load', () => {
                                     plane.style.left = `${left - 150}px`;
                                     plane.style.transform = 'scaleX(-1) rotateZ(0deg)';
                                     planeAudio.volume = 0.3;
-                                    return planeLocation;
                                 }
                                 break;
 
@@ -117,7 +115,6 @@ window.addEventListener('load', () => {
                                     plane.style.left = `${left + 150}px`;
                                     plane.style.transform = 'scaleX(-1) rotateZ(0deg)';
                                     planeAudio.volume = 0.3;
-                                    return planeLocation;
                                 }
                                 break;
 
@@ -126,7 +123,6 @@ window.addEventListener('load', () => {
                                     plane.style.top = `${top + document.documentElement.clientHeight / 2 - 100}px`;
                                     plane.style.transform = 'scaleX(-1) rotateZ(-10deg)';
                                     planeAudio.volume = 0.2;
-                                    return planeLocation;
                                 }
 
                                 break;
@@ -163,7 +159,7 @@ window.addEventListener('load', () => {
                     `;
 
                     evilPlane.move = function move() {
-                        if (evilPlane.offsetLeft < 400 && evilPlane.offsetLeft > 40) {
+                        if (evilPlane.offsetLeft < innerWidth * 0.33) {
                             collision(planeMain, evilPlane);
                         }
                         if (evilPlane.offsetLeft > 0) {
@@ -227,7 +223,7 @@ window.addEventListener('load', () => {
                         z-index:${zInsex};
                     `;
                     cloud.move = function move() {
-                        if (cloud.offsetLeft < 400 && cloud.offsetLeft > 40) {
+                        if (cloud.offsetLeft < innerWidth * 0.33) {
                             collision(planeMain, cloud);
                         }
                         if (cloud.offsetLeft > 0) {
